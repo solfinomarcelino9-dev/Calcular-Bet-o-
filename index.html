@@ -1,89 +1,168 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-58P7VZ8N6W"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3M57116M9E"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-58P7VZ8N6W');
+      gtag('config', 'G-3M57116M9E');
     </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CalcObra Pro - Completo</title>
+    <title>Mestres da Obra - MZ | Gestor Pró</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #eef2f3; padding: 15px; display: flex; justify-content: center; }
-        .card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 450px; }
-        h2 { color: #2c3e50; text-align: center; margin-bottom: 5px; }
-        .subtitle { text-align: center; color: #7f8c8d; font-size: 0.9em; margin-bottom: 25px; }
-        label { display: block; margin-top: 15px; color: #34495e; font-weight: 600; font-size: 0.85em; }
-        input { width: 100%; padding: 12px; margin-top: 5px; border: 2px solid #dfe6e9; border-radius: 10px; box-sizing: border-box; font-size: 16px; outline: none; transition: 0.3s; }
-        input:focus { border-color: #27ae60; }
-        button { width: 100%; padding: 16px; background: #27ae60; color: white; border: none; border-radius: 10px; margin-top: 25px; cursor: pointer; font-size: 17px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
-        .result { margin-top: 25px; padding: 20px; background: #f0fff4; border: 1px solid #c6f6d5; border-radius: 12px; display: none; }
-        .result-item { display: flex; justify-content: space-between; margin-bottom: 10px; border-bottom: 1px dashed #c6f6d5; padding-bottom: 5px; }
-        .val { font-weight: bold; color: #2d3748; }
-        .footer-note { font-size: 0.75em; color: #a0aec0; margin-top: 15px; text-align: center; }
+        :root { 
+            --primary: #1e3a8a; 
+            --accent: #22c55e;  
+            --bg-light: #f3f4f6;
+            --text-main: #1f2937;
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--bg-light);
+            background-image: 
+                radial-gradient(at 10% 10%, rgba(30, 58, 138, 0.08) 0px, transparent 40%),
+                radial-gradient(at 90% 90%, rgba(34, 197, 94, 0.05) 0px, transparent 40%);
+            margin: 0; padding: 10px; min-height: 100vh;
+            display: flex; justify-content: center; align-items: center;
+        }
+
+        .app-container { 
+            width: 100%; max-width: 420px; 
+            background: rgba(255, 255, 255, 0.9); 
+            backdrop-filter: blur(12px);
+            border-radius: 24px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08); 
+            padding: 30px; border: 1px solid rgba(255, 255, 255, 0.5);
+            box-sizing: border-box;
+        }
+
+        .logo-header { text-align: center; margin-bottom: 30px; display: flex; align-items: center; justify-content: center; gap: 12px; }
+        .logo-icon { font-size: 2.2rem; color: var(--primary); background: #e0e7ff; padding: 10px; border-radius: 15px; }
+        .logo-text h1 { font-size: 1.4rem; font-weight: 800; margin: 0; color: var(--primary); letter-spacing: -1px; }
+        .logo-text p { font-size: 0.75rem; margin: 0; color: var(--accent); text-transform: uppercase; font-weight: 600; }
+
+        .section { margin-bottom: 18px; }
+        label { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 0.9rem; color: var(--text-main); margin-bottom: 8px; }
+        
+        input { 
+            width: 100%; padding: 14px; border: 2px solid #e5e7eb; border-radius: 12px; 
+            font-size: 16px; transition: all 0.3s ease; background: #f9fafb; box-sizing: border-box;
+        }
+        input:focus { border-color: var(--primary); outline: none; background: white; box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.1); }
+
+        .btn-calc { 
+            width: 100%; padding: 16px; 
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white; border: none; border-radius: 12px; font-weight: 700; 
+            font-size: 1rem; cursor: pointer; margin-top: 10px; 
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .result-box { margin-top: 25px; padding: 20px; background: #f0fdf4; border-radius: 16px; display: none; border: 1px solid rgba(34, 197, 94, 0.2); }
+        .result-title { font-size: 1rem; color: #166534; font-weight: 700; text-align: center; margin-bottom: 15px; }
+        .item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: 0.95rem; }
+        
+        .price-final { font-size: 1.4em; color: var(--accent); font-weight: 800; text-align: center; margin: 15px 0; padding: 10px; background: white; border-radius: 10px; }
+        
+        .btn-whatsapp { width: 100%; padding: 14px; background: #25d366; color: white; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; }
     </style>
 </head>
 <body>
 
-<div class="card">
-    <h2>CalcObra Pro 🏗️</h2>
-    <p class="subtitle">Tijolos, Cimento e Areia</p>
+<div class="app-container">
+    <div class="logo-header">
+        <i class="fas fa-tools logo-icon"></i>
+        <div class="logo-text">
+            <h1>Mestres da Obra</h1>
+            <p>Gestor Profissional MZ</p>
+        </div>
+    </div>
+    
+    <div class="section">
+        <label><i class="fas fa-cube"></i>Volume do Betão (m³)</label>
+        <input type="number" id="volume" placeholder="Ex: 1.5" step="0.1">
+    </div>
 
-    <label>Comprimento da Parede (m)</label>
-    <input type="number" id="cp" placeholder="Ex: 5" step="0.01">
+    <div class="section">
+        <label><i class="fas fa-money-bill-wave"></i>Preço Cimento (50kg)</label>
+        <input type="number" id="pCimento" value="650">
+    </div>
 
-    <label>Altura da Parede (m)</label>
-    <input type="number" id="ap" placeholder="Ex: 3" step="0.01">
+    <div class="section">
+        <label><i class="fas fa-truck-ramp-box"></i>Preço Areia (por m³)</label>
+        <input type="number" id="pAreia" value="1200">
+    </div>
 
-    <label>Espessura da Junta (cm)</label>
-    <input type="number" id="junta" value="1.5">
+    <div class="section">
+        <label><i class="fas fa-mountain"></i>Preço Brita (por m³)</label>
+        <input type="number" id="pBrita" value="1800">
+    </div>
 
-    <button onclick="calcularTudo()">Calcular Materiais</button>
+    <button class="btn-calc" onclick="gerarOrcamento()">CALCULAR AGORA</button>
 
-    <div id="res" class="result">
-        <div class="result-item"><span>🧱 Tijolos:</span> <span id="resTijolo" class="val">0</span></div>
-        <div class="result-item"><span>📦 Cimento (50kg):</span> <span id="resCimento" class="val">0</span></div>
-        <div class="result-item"><span>⏳ Areia (m³):</span> <span id="resAreia" class="val">0</span></div>
-        <p class="footer-note">*Cálculo inclui 10% de margem de desperdício.</p>
+    <div id="resultado" class="result-box">
+        <h3 class="result-title">Materiais Necessários</h3>
+        <div class="item"><span><i class="fas fa-sack-xmark"></i> Cimento:</span> <span id="resCimento" style="font-weight:700"></span></div>
+        <div class="item"><span><i class="fas fa-shovels"></i> Areia:</span> <span id="resAreia" style="font-weight:700"></span></div>
+        <div class="item"><span><i class="fas fa-building"></i> Brita:</span> <span id="resBrita" style="font-weight:700"></span></div>
+        
+        <h3 class="result-title" style="margin-top:15px;">Medida Prática (Latas 20L)</h3>
+        <div class="item"><span><i class="fas fa-bucket"></i> Areia:</span> <span id="latasAreia" style="font-weight:700"></span></div>
+        <div class="item"><span><i class="fas fa-bucket"></i> Brita:</span> <span id="latasBrita" style="font-weight:700"></span></div>
+
+        <div class="price-final" id="resTotal"></div>
+        
+        <button class="btn-whatsapp" onclick="compartilharWhatsApp()">
+            <i class="fab fa-whatsapp"></i> Enviar Orçamento
+        </button>
     </div>
 </div>
 
 <script>
-    function calcularTudo() {
-        const cp = parseFloat(document.getElementById('cp').value);
-        const ap = parseFloat(document.getElementById('ap').value);
-        const junta = parseFloat(document.getElementById('junta').value) / 100;
+    function gerarOrcamento() {
+        const vol = parseFloat(document.getElementById('volume').value);
+        if (!vol) return alert("Por favor, insira o volume.");
 
-        if (cp > 0 && ap > 0) {
-            const area = cp * ap;
-            
-            // Cálculo base para tijolo padrão 20x10x15cm
-            // 1m2 gasta aprox 35 tijolos dependendo da posição
-            let tijolos = Math.ceil(area * 38); 
-            tijolos = Math.ceil(tijolos * 1.10); // +10%
+        const pCim = parseFloat(document.getElementById('pCimento').value);
+        const pAre = parseFloat(document.getElementById('pAreia').value);
+        const pBri = parseFloat(document.getElementById('pBrita').value);
 
-            // Estimativa de Argamassa (Cimento e Areia)
-            // Volume de argamassa aprox 0.02m3 por m2 de parede
-            const volArgamassa = area * 0.022;
-            let sacosCimento = Math.ceil(volArgamassa * 5.5); // Aprox 5.5 sacos por m3 de argamassa
-            let m3Areia = (volArgamassa * 0.9).toFixed(2);
+        const qtdCimento = Math.ceil(vol * 7); 
+        const qtdAreia = vol * 0.56; 
+        const qtdBrita = vol * 0.84; 
 
-            document.getElementById('resTijolo').innerText = tijolos + ' uni';
-            document.getElementById('resCimento').innerText = sacosCimento + ' sacos';
-            document.getElementById('resAreia').innerText = m3Areia + ' m³';
-            
-            document.getElementById('res').style.display = 'block';
-            
-            // Envia evento para o Analytics saber que alguém calculou
-            gtag('event', 'calculo_realizado', { 'event_category': 'ferramenta', 'event_label': 'obra_completa' });
-        } else {
-            alert("Por favor, preencha as dimensões da parede.");
-        }
+        const lAreia = Math.round(qtdAreia * 50);
+        const lBrita = Math.round(qtdBrita * 50);
+        const custoTotal = (qtdCimento * pCim) + (qtdAreia * pAre) + (qtdBrita * pBri);
+
+        document.getElementById('resultado').style.display = 'block';
+        document.getElementById('resCimento').innerText = qtdCimento + " sacos";
+        document.getElementById('resAreia').innerText = qtdAreia.toFixed(2) + " m³";
+        document.getElementById('resBrita').innerText = qtdBrita.toFixed(2) + " m³";
+        document.getElementById('latasAreia').innerText = lAreia + " latas";
+        document.getElementById('latasBrita').innerText = lBrita + " latas";
+        
+        const formatador = new Intl.NumberFormat('pt-MZ', { style: 'currency', currency: 'MZN', minimumFractionDigits: 0 });
+        document.getElementById('resTotal').innerText = formatador.format(custoTotal);
+    }
+
+    function compartilharWhatsApp() {
+        const vol = document.getElementById('volume').value;
+        const total = document.getElementById('resTotal').innerText;
+        const cimento = document.getElementById('resCimento').innerText;
+        const latasA = document.getElementById('latasAreia').innerText;
+        const latasB = document.getElementById('latasBrita').innerText;
+
+        const texto = `*ORÇAMENTO DE MATERIAIS*%0AMestres da Obra - MZ%0A---------------------------%0AVolume: ${vol} m³%0A${cimento}%0AAreia: ${latasA} latas%0ABrita: ${latasB} latas%0A---------------------------%0A*Custo Estimado: ${total}*%0A_Gerado pelo Mestres da Obra_`;
+        window.open(`https://wa.me/?text=${texto}`, '_blank');
     }
 </script>
 
